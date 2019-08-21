@@ -26,7 +26,7 @@ Route::get('/person',function (Request $request){
         $confKey=env('APP_KEY');
 
         if($confKey==$api_key){
-            $dataReturn=\App\User::all();
+            $dataReturn=  DB::table('users')->select('id','name', 'email','password')->get();
             return $dataReturn;
         }
         abort(404);
